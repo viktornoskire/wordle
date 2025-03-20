@@ -42,4 +42,37 @@ describe("the game wordle", () => {
       { letter: "K", result: "correct" },
     ]);
   });
+
+  test("the words: 'CYKLA' and 'LALHÅ'", () => {
+    const output = wordle("CYKLA", "LALHÅ");
+    expect(output).toEqual([
+      { letter: "L", result: "misplaced" },
+      { letter: "A", result: "misplaced" },
+      { letter: "L", result: "incorrect" },
+      { letter: "H", result: "incorrect" },
+      { letter: "Å", result: "incorrect" },
+    ]);
+  });
+
+  test("the words: 'cYkLa' and 'HaLlÅ'", () => {
+    const output = wordle("cYkLa", "HaLlÅ");
+    expect(output).toEqual([
+      { letter: "H", result: "incorrect" },
+      { letter: "A", result: "misplaced" },
+      { letter: "L", result: "incorrect" },
+      { letter: "L", result: "correct" },
+      { letter: "Å", result: "incorrect" },
+    ]);
+  });
+
+  test("the words: 'c Y.k L%a' and 'H<aL&l>Å'", () => {
+    const output = wordle("c Y.k L%a", "H<aL &l>Å");
+    expect(output).toEqual([
+      { letter: "H", result: "incorrect" },
+      { letter: "A", result: "misplaced" },
+      { letter: "L", result: "incorrect" },
+      { letter: "L", result: "correct" },
+      { letter: "Å", result: "incorrect" },
+    ]);
+  });
 });
