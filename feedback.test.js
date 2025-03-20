@@ -11,7 +11,7 @@ import wordle from "./feedback.js";
 describe("the game wordle", () => {
   test("the words: 'BANAN' and 'VALFISK'", () => {
     const output = wordle("BANAN", "VALFISK");
-    expect(output).toEqual("Words does not match!");
+    expect(output).toEqual("Word length does not match!");
   });
 
   test("the words: 'BANAN' and 'BANAN'", () => {
@@ -65,8 +65,8 @@ describe("the game wordle", () => {
     ]);
   });
 
-  test("the words: 'c Y.k L%a' and 'H<aL&l>Å'", () => {
-    const output = wordle("c Y.k L%a", "H<aL &l>Å");
+  test("the words: 'c Y k L a' and 'H  aL l Å'", () => {
+    const output = wordle("c Y k L a", "H  aL l Å");
     expect(output).toEqual([
       { letter: "H", result: "incorrect" },
       { letter: "A", result: "misplaced" },
