@@ -1,21 +1,27 @@
-/* 
+export default function wordle(chosen, guess) {
+  let c = chosen.toUpperCase();
+  let g = guess.toUpperCase();
 
-A: Feedback
+  if (c.length !== g.length) {
+    return "Words does not match!";
+  }
 
-1. Skapa en tom array
-2. Gör båda orden till lowercase
-3. För varje bokstav i gissningsordet
-    a. Om bokstav finns på samma index som i det utvalda ordet
-     I. Lägg bokstav i ett objekt med värde: "correct"
-     II. Lägg in objektet i svarsarrayen
-    b. Annars om bokstav finns någonstans i ordet
-     I. Lägg bokstav i ett objekt med värde: "misplaced"
-     II. Lägg in objektet i svarsarrayen
-    c. Annars finns bokstaven inte i ordet
-     I. Lägg bokstav i ett objekt med värde: "incorrect"
-     II. Lägg in objektet i svarsarrayen
-4. Presentera resultatet
+  if (c === g) {
+    return "Your guess is correct!";
+  }
 
-*/
+  const res = g.split("").map((char, index) => {
+    if (char === c[index]) {
+      return { letter: char, result: "correct" };
+    } else if (!c.includes(char)) {
+      return { letter: char, result: "incorrect" };
+    } else if (c.includes(char)) {
+      return { letter: char, result: "misplaced" };
+    }
+  });
 
-console.log('Hello World');
+  return res;
+}
+
+const word = wordle("cykla", "hallå");
+console.log(word);
