@@ -9,10 +9,13 @@ import wordle from "./feedback.js";
             same length, if not, the function will return a message.
 
     Test 2: Verifies if the words are the same, then the function
-            responds with a message. 
+            responds with a message.  
 
     Test 3: Here the test is running a normal "Wordle" case 
-            with two words with the same length. 
+            with two words with the same length. Sends two words 
+            in the function and for each letter in the guessed word 
+            it returns an object with corresponding 
+            result for that letter.
     
     Test 4: If there is one L in the chosen word and the user
             inputs a word with two L, the function will output 
